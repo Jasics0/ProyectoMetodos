@@ -34,11 +34,4 @@ public class Derivada {
         return derivada;
     }
 
-
-    public static void main(String[] args) {
-        System.out.print("Dijite la función a derivar: ");
-        String funcion = new Scanner(System.in).next();
-        System.out.println("Derivada: "+derivar(funcion));
-    }
-
 }

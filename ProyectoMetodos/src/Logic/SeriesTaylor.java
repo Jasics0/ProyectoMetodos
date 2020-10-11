@@ -70,7 +70,7 @@ public class SeriesTaylor {
     public static void main(String[] args) {
         SeriesTaylor s = new SeriesTaylor("sqrt(x)");
         System.out.println(s.encontrarNumeroCercano(50));
-        System.out.println("mmpatas");
-        //soy gay
+        System.out.println();
+        //Sieresgeiamicuo
     }
 }
