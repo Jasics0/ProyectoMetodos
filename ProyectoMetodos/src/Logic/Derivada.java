@@ -13,9 +13,6 @@ public class Derivada {
         String derivada="";
         String respecto="x";
 
-        for (int i = 0; i < funcion.length() ; i++) {
-
-        }
         DJep derivador= new DJep();
 
         derivador.addStandardFunctions();
