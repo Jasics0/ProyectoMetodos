@@ -72,5 +72,5 @@ public class SeriesTaylor {
         System.out.println(s.encontrarNumeroCercano(2));
 
     }
-
+    //xddddddddddddd
 }
