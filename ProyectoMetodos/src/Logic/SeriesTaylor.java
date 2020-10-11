@@ -70,6 +70,6 @@ public class SeriesTaylor {
     public static void main(String[] args) {
         SeriesTaylor s = new SeriesTaylor("tan(x)");
         System.out.println(s.encontrarNumeroCercano(2));
-        System.out.println("Cabezondemierdaaa");
+        System.out.println("mmpatas");
     }
 }
