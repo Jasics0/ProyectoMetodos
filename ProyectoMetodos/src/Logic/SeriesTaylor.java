@@ -68,9 +68,11 @@ public class SeriesTaylor {
     }
 
     public static void main(String[] args) {
-        SeriesTaylor s = new SeriesTaylor("sqrt(x)");
-        System.out.println(s.encontrarNumeroCercano(50));
-        System.out.println();
-        //Sieresgeiamicuo
+        Funcion f= new Funcion();
+        f.definirFuncion("x^3");
+        f.valorX(2);
+        System.out.println(f.getResultado());
+        f.derivar();
+        System.out.println(f.getResultado());
     }
 }

@@ -1,9 +1,12 @@
 package Logic;
 
+import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.JEP;
+import org.nfunk.jep.Node;
+import org.nfunk.jep.ParseException;
 
 public class Funcion {
-
+    private String funcionOriginal;
     private String funcion;
     private double resultado;
     private double x;
@@ -16,7 +19,7 @@ public class Funcion {
     }
 
     public void definirFuncion(String funcion) {
-        this.funcion = funcion;
+        this.funcionOriginal=this.funcion = funcion;
     }
 
     public void valorX(double x) {
@@ -54,10 +57,40 @@ public class Funcion {
         return funcion;
     }
 
+    public String getFuncionOriginal(){
+        return funcionOriginal;
+    }
+
     private boolean trigonometrica() {
         if (funcion.contains("sin") || funcion.contains("cos") || funcion.contains("tan") || funcion.contains("asin") || funcion.contains("acos") || funcion.contains("atan")) {
             return true;
         }
         return false;
+    }
+
+
+    public void derivar(){
+        String derivada="";
+        String respecto="x";
+
+        DJep derivador= new DJep();
+
+        derivador.addStandardFunctions();
+        derivador.addStandardConstants();
+        derivador.addComplex();
+        derivador.setAllowUndeclared(true);
+        derivador.setAllowAssignment(true);
+        derivador.setImplicitMul(true);
+        derivador.addStandardDiffRules();
+
+        try {
+            Node diff = derivador.parse(funcion);
+            diff= derivador.differentiate(diff,respecto);
+            diff= derivador.simplify(diff);
+            derivada= derivador.toString(diff);
+            funcion=derivada;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
