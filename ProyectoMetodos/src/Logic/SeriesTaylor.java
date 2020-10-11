@@ -97,5 +97,6 @@ public class SeriesTaylor {
     public static void main(String[] args) {
         SeriesTaylor st= new SeriesTaylor("x^(1/5)",245);
         System.out.println(st.serieDeTaylor());
+        //sebastianmaricon
     }
 }
