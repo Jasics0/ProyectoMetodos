@@ -2,21 +2,25 @@ package Logic;
 
 import java.util.Scanner;
 
+import static java.lang.Float.NaN;
+
 public class SeriesTaylor {
 
     private final Funcion funcion = new Funcion();
+    private final double x;
 
-    public SeriesTaylor(String funcion) {
+    public SeriesTaylor(String funcion, double x) {
         this.funcion.definirFuncion(funcion);
         this.funcion.valorX(1);
-
+        this.x=x;
         while (this.funcion.getResultado().contains("error")) {
             System.out.print("La función no sirve weonaso. Digite otra:");
             this.funcion.definirFuncion(new Scanner(System.in).next());
         }
+
     }
 
-    public double encontrarNumeroCercano(double x) {
+    public double encontrarNumeroCercano() {
 
         int i = (int)x, i2 = Integer.parseInt(((x%1)+"").charAt(2)+"");
         int c = 0, c2 = 0;
@@ -67,12 +71,31 @@ public class SeriesTaylor {
 
     }
 
+    public double serieDeTaylor(){
+        double c = encontrarNumeroCercano();
+        double fBack=0;
+        double fNext = Double.parseDouble(funcion.getResultado());
+        funcion.valorX(c);
+        int i=0;
+        while ( Float.isNaN(Float.parseFloat(((fNext - fBack) / fNext)+"")) || (Math.round(Math.abs((fNext -fBack)/ fNext)*100))!=0  ){
+            fBack= fNext;
+            i+=1;
+            funcion.derivar();
+            fNext =(Double.parseDouble(funcion.getResultado())/factorial(i))*Math.pow((x- c),i)+fBack;
+        }
+        return fNext;
+    }
+
+    public int factorial(int i){
+        int factorial=1;
+        for (int j = 1; j <= i; j++) {
+            factorial= j*factorial;
+        }
+        return factorial;
+    }
+
     public static void main(String[] args) {
-        Funcion f= new Funcion();
-        f.definirFuncion("x^3");
-        f.valorX(2);
-        System.out.println(f.getResultado());
-        f.derivar();
-        System.out.println(f.getResultado());
+        SeriesTaylor st= new SeriesTaylor("x^(1/5)",245);
+        System.out.println(st.serieDeTaylor());
     }
 }
