@@ -71,5 +71,6 @@ public class SeriesTaylor {
         SeriesTaylor s = new SeriesTaylor("tan(x)");
         System.out.println(s.encontrarNumeroCercano(2));
         System.out.println("mmpatas");
+        //soy gay
     }
 }
