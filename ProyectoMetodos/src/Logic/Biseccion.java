@@ -25,6 +25,7 @@ public class Biseccion {
         double num=1.5;
         int num1=(int)num;
         int num2=(int) ((num%1)*10);
+        double numero;
         for (int i = 0; i < 10; i++) {
            num2++;
            if(num2==10){
