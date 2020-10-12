@@ -11,7 +11,7 @@ public class Funcion {
     private double resultado;
     private double x;
     private String error = "";
-    private JEP javaFuncion = new JEP();
+    private final JEP javaFuncion = new JEP();
 
     public Funcion() {
         this.javaFuncion.addStandardFunctions();

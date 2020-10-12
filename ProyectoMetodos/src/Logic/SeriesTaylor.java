@@ -95,7 +95,7 @@ public class SeriesTaylor {
     }
 
     public static void main(String[] args) {
-        SeriesTaylor st= new SeriesTaylor("x^(1/5)",245);
+        SeriesTaylor st= new SeriesTaylor("ln(x)+x^2",1);
 
         System.out.println(st.serieDeTaylor());
         //sebastianmariconfff

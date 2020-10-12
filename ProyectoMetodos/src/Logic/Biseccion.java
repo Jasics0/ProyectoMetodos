@@ -28,7 +28,7 @@ public class Biseccion {
         Funcion porno= new Funcion();
         porno.definirFuncion("x^(2)-43");
         porno.valorX(3);
-         double num1=,num2=,aux;
+         double num1=10.2,num2=30,aux;
          int  entero=(int)num1 ,decimal=(int)(num1%1)*10;
              if(num1>0 && num2>0){
                 if(num1<=num2){
