@@ -9,13 +9,7 @@ public class SeriesTaylor {
 
     public SeriesTaylor(String funcion, double x) {
         this.funcion.definirFuncion(funcion);
-        this.funcion.valorX(1);
         this.x = x;
-        while (this.funcion.getResultado().contains("error")) {
-            System.out.print("La función no sirve weonaso. Digite otra:");
-            this.funcion.definirFuncion(new Scanner(System.in).next());
-        }
-
     }
 
     public double encontrarNumeroCercano() {
@@ -97,7 +91,7 @@ public class SeriesTaylor {
     }
 
     public static void main(String[] args) {
-        SeriesTaylor st = new SeriesTaylor("x", 0.1);
+        SeriesTaylor st = new SeriesTaylor("ln(x)", 1.5);
 
         System.out.println(st.serieDeTaylor());
         //sebastianmariconfff
