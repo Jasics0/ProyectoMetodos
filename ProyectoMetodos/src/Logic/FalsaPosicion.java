@@ -1,12 +1,9 @@
 package Logic;
 
-import java.util.Scanner;
-
 public class FalsaPosicion {
 
     private final Funcion funcion = new Funcion();
     private double xi, xu;
-
 
     public FalsaPosicion(String funcion) {
         this.funcion.definirFuncion(funcion);
@@ -15,16 +12,15 @@ public class FalsaPosicion {
     }
 
     public double  hallarXr(){
-        double xr=0;
-        xr= ((evaluarFuncion(xu)*xi)-evaluarFuncion(xi)*xu)/(evaluarFuncion(xu)-evaluarFuncion(xi));
+        double xr=((evaluarFuncion(xu)*xi)-evaluarFuncion(xi)*xu)/(evaluarFuncion(xu)-evaluarFuncion(xi));
         double fBack = 0;
         double fNext=xr ;
         while (Float.isNaN(Float.parseFloat(((fNext - fBack) / fNext) + "")) || (Math.round(Math.abs((fNext - fBack) / fNext) * 100)) != 0) {
         fBack=fNext;
-        if (evaluarFuncion(xi) * evaluarFuncion(xr)<0){
-        xu=xr;
+        if (evaluarFuncion(xi) * evaluarFuncion(fNext)<0){
+        xu=fNext;
         } else{
-        xi=xr;
+        xi=fNext;
         }
         fNext= ((evaluarFuncion(xu)*xi)-evaluarFuncion(xi)*xu)/(evaluarFuncion(xu)-evaluarFuncion(xi));
         }
@@ -39,7 +35,7 @@ public class FalsaPosicion {
     }
 
     public static void main(String[] args) {
-        FalsaPosicion f = new FalsaPosicion("x^2+ln(x)+e^x-205");
+        FalsaPosicion f = new FalsaPosicion("x^2-43");
         System.out.println(f.hallarXr());
     }
 }
