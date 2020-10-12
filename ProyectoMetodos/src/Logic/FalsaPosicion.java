@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class FalsaPosicion {
 
     private final Funcion funcion = new Funcion();
-    private double xi = 0, xu = 0;
+    private double xi, xu;
 
 
     public FalsaPosicion(String funcion) {

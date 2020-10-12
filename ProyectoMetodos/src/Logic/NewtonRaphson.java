@@ -3,7 +3,7 @@ package Logic;
 public class NewtonRaphson {
 
     private final Funcion funcion = new Funcion();
-    private double xi = 0;
+    private double xi;
 
 
     public NewtonRaphson(String funcion) {
