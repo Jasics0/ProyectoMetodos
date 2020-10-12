@@ -33,13 +33,6 @@ public class NewtonRaphson {
         return fNext;
     }
 
-    private double evaluarFuncion(double x){
-        Funcion funcion = new Funcion();
-        funcion.definirFuncion(this.funcion.getFuncion());
-        funcion.valorX(x);
-        return Double.parseDouble(funcion.getResultado());
-    }
-
     public static void main(String[] args) {
         NewtonRaphson n = new NewtonRaphson("x^2+ln(x)+e^x-205");
         System.out.println(n.calcularNewtonRaphson());
