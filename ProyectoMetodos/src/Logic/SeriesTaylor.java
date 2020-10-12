@@ -97,7 +97,7 @@ public class SeriesTaylor {
     }
 
     public static void main(String[] args) {
-        SeriesTaylor st = new SeriesTaylor("x^2", 0.6);
+        SeriesTaylor st = new SeriesTaylor("x", 0.1);
 
         System.out.println(st.serieDeTaylor());
         //sebastianmariconfff

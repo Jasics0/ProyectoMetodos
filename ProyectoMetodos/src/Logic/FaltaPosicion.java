@@ -18,16 +18,19 @@ public class FaltaPosicion {
 
     private void encontrarNumeros() {
         double anterior = 0;
-        funcion.valorX(0);
-        int i = 0, i2 = 0;
-        if (Float.isInfinite(Float.parseFloat(funcion.getResultado()))) {
-            i = 0;
-            i2 = 1;
-            funcion.valorX(Double.parseDouble(i + "." + i2));
+        funcion.valorX(0.1);
+        int i = 0, i2 = 1;
+        while (Float.isInfinite(Float.parseFloat(funcion.getResultado()))) {
+            i2+=1;
+         if (i2==10){
+             i+=1;
+             i2 =0 ;
+         }
+            funcion.valorX(funcion.distribuirSignos(i,i2));
         }
         if (Double.parseDouble(funcion.getResultado()) < 0) {
             while (Double.parseDouble(funcion.getResultado()) < 0) {
-                anterior = Double.parseDouble(i + "." + i2);
+                anterior = funcion.distribuirSignos(i,i2);
                 i2 += 1;
                 if (i2 == 10) {
                     i += 1;
@@ -42,33 +45,31 @@ public class FaltaPosicion {
                     i += 1;
                     i2 = 0;
                 }
-                funcion.valorX(Double.parseDouble(i + "." + i2));
+                funcion.valorX(funcion.distribuirSignos(i,i2));
             }
-            b = Double.parseDouble(i + "." + i2);
+            b = funcion.distribuirSignos(i,i2);
             System.out.println(a);
             System.out.println(b);
         } else {
             while (Double.parseDouble(funcion.getResultado()) > 0) {
-                anterior = Double.parseDouble(i + "." + i2);
-                if (i2 == 0) {
+                anterior = funcion.distribuirSignos(i,i2);
+                if (i2 == -9) {
                     i -= 1;
-                    i2 = 9;
+                    i2 = 0;
                 } else
                     i2 -= 1;
-                funcion.valorX(Double.parseDouble(i + "." + i2));
+                funcion.valorX(funcion.distribuirSignos(i,i2));
             }
             a = anterior;
             while (Double.parseDouble(funcion.getResultado()) >= 0) {
-                if (i2 == 0 && i!=0) {
+                if (i2 == -9) {
                     i -= 1;
-                    i2 = 9;
+                    i2 = 0;
                 } else
                     i2 -= 1;
-                funcion.valorX(Double.parseDouble(i + "." + i2));
+                funcion.valorX(funcion.distribuirSignos(i,i2));
             }
-            b = Double.parseDouble(i + "." + i2);
-            System.out.println(a);
-            System.out.println(b);
+            b = funcion.distribuirSignos(i,i2);
         }
     }
 
