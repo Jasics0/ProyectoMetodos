@@ -18,7 +18,13 @@ public class FaltaPosicion {
 
     private void encontrarNumeros() {
         double anterior = 0;
-        int i = 1, i2 = 0;
+        funcion.valorX(0);
+        int i = 0, i2 = 0;
+        if (Float.isInfinite(Float.parseFloat(funcion.getResultado()))) {
+            i = 0;
+            i2 = 1;
+            funcion.valorX(Double.parseDouble(i + "." + i2));
+        }
         if (Double.parseDouble(funcion.getResultado()) < 0) {
             while (Double.parseDouble(funcion.getResultado()) < 0) {
                 anterior = Double.parseDouble(i + "." + i2);
@@ -36,8 +42,9 @@ public class FaltaPosicion {
                     i += 1;
                     i2 = 0;
                 }
+                funcion.valorX(Double.parseDouble(i + "." + i2));
             }
-            b=Double.parseDouble(i+"."+i2);
+            b = Double.parseDouble(i + "." + i2);
             System.out.println(a);
             System.out.println(b);
         } else {
@@ -46,7 +53,7 @@ public class FaltaPosicion {
     }
 
     public static void main(String[] args) {
-        FaltaPosicion f = new FaltaPosicion("x^2+ln(x)+e^x-205");
+        FaltaPosicion f = new FaltaPosicion("ln(x)");
         f.encontrarNumeros();
     }
 }
