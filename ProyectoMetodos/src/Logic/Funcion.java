@@ -6,6 +6,7 @@ import org.nfunk.jep.Node;
 import org.nfunk.jep.ParseException;
 
 public class Funcion {
+
     private String funcionOriginal;
     private String funcion;
     private double resultado;
