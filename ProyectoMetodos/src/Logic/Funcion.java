@@ -67,8 +67,8 @@ public class Funcion {
         return funcion;
     }
 
-    public String getFuncionOriginal() {
-        return funcionOriginal;
+    public void volverFuncionOriginal() {
+        funcion=funcionOriginal;
     }
 
     private boolean trigonometrica() {

@@ -6,7 +6,6 @@ public class FalsaPosicion {
 
     private final Funcion funcion = new Funcion();
     private double xi = 0, xu = 0;
-    private double xr=0;
 
 
     public FalsaPosicion(String funcion) {
@@ -16,6 +15,7 @@ public class FalsaPosicion {
     }
 
     public double  hallarXr(){
+        double xr=0;
         xr= ((evaluarFuncion(xu)*xi)-evaluarFuncion(xi)*xu)/(evaluarFuncion(xu)-evaluarFuncion(xi));
         double fBack = 0;
         double fNext=xr ;
