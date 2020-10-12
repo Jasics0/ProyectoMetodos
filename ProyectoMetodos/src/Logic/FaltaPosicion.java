@@ -48,12 +48,32 @@ public class FaltaPosicion {
             System.out.println(a);
             System.out.println(b);
         } else {
-
+            while (Double.parseDouble(funcion.getResultado()) > 0) {
+                anterior = Double.parseDouble(i + "." + i2);
+                if (i2 == 0) {
+                    i -= 1;
+                    i2 = 9;
+                } else
+                    i2 -= 1;
+                funcion.valorX(Double.parseDouble(i + "." + i2));
+            }
+            a = anterior;
+            while (Double.parseDouble(funcion.getResultado()) >= 0) {
+                if (i2 == 0 && i!=0) {
+                    i -= 1;
+                    i2 = 9;
+                } else
+                    i2 -= 1;
+                funcion.valorX(Double.parseDouble(i + "." + i2));
+            }
+            b = Double.parseDouble(i + "." + i2);
+            System.out.println(a);
+            System.out.println(b);
         }
     }
 
     public static void main(String[] args) {
-        FaltaPosicion f = new FaltaPosicion("ln(x)");
+        FaltaPosicion f = new FaltaPosicion("x");
         f.encontrarNumeros();
     }
 }

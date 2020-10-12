@@ -19,10 +19,15 @@ public class SeriesTaylor {
     }
 
     public double encontrarNumeroCercano() {
-
-        int i = (int) x, i2 = (int) ((x % 1) * 10);
         int c = 0, c2 = 0;
-        double a = Double.parseDouble(i + "." + i2);
+        int i = (int) x, i2 = (int) ((x % 1) * 10);
+        double a;
+        if (x < 0) {
+            a = funcion.distribuirSignos(i, -i2);
+        } else {
+            a = funcion.distribuirSignos(i, i2);
+        }
+
         funcion.valorX(a);
         //Intenta de 0 hasta 1000
         while (((Math.abs(Double.parseDouble(funcion.getResultado()))) - (Math.abs(Math.floor(Double.parseDouble(funcion.getResultado()))))) % 1 != 0) {
@@ -31,7 +36,7 @@ public class SeriesTaylor {
                 i += 1;
                 i2 = 0;
             }
-            a = Double.parseDouble(i + "." + i2);
+            a = funcion.distribuirSignos(i, i2);
             funcion.valorX(a);
             c += 1;
             if (c >= 10000) {
@@ -41,17 +46,16 @@ public class SeriesTaylor {
 
         i = (int) x;
         i2 = (int) ((x % 1) * 10);
-        double b = Double.parseDouble(i + "." + i2);
+        double b=funcion.distribuirSignos(i,i2);
         funcion.valorX(b);
         //Intenta de 0 hasta -1000
         while (((Math.abs(Double.parseDouble(funcion.getResultado()))) - (Math.abs(Math.floor(Double.parseDouble(funcion.getResultado()))))) % 1 != 0) {
-            if (i2 == 0) {
+            if (i2 == -9) {
                 i -= 1;
-                i2 = 9;
+                i2 = 0;
             } else
                 i2 -= 1;
-
-            b = Double.parseDouble(i + "." + i2);
+            b = funcion.distribuirSignos(i, i2);
             funcion.valorX(b);
             c2 += 1;
             if (c2 >= 10000) {
@@ -72,8 +76,8 @@ public class SeriesTaylor {
     public double serieDeTaylor() {
         double c = encontrarNumeroCercano();
         double fBack = 0;
-        double fNext = Double.parseDouble(funcion.getResultado());
         funcion.valorX(c);
+        double fNext = Double.parseDouble(funcion.getResultado());
         int i = 0;
         while (Float.isNaN(Float.parseFloat(((fNext - fBack) / fNext) + "")) || (Math.round(Math.abs((fNext - fBack) / fNext) * 100)) != 0) {
             fBack = fNext;
@@ -93,7 +97,7 @@ public class SeriesTaylor {
     }
 
     public static void main(String[] args) {
-        SeriesTaylor st = new SeriesTaylor("cos(x)", 160);
+        SeriesTaylor st = new SeriesTaylor("x^2", 0.6);
 
         System.out.println(st.serieDeTaylor());
         //sebastianmariconfff

@@ -69,6 +69,16 @@ public class Funcion {
         return false;
     }
 
+    public Double distribuirSignos(int i, int i2){
+        if (i<0 || i2<0){
+            i= Math.abs(i);
+            i2=Math.abs(i2);
+
+            return -Double.parseDouble(i+"."+i2);
+        } else {
+            return Double.parseDouble(i+"."+i2);
+        }
+    }
 
     public void derivar(){
         String derivada="";
