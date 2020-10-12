@@ -91,7 +91,7 @@ public class SeriesTaylor {
     }
 
     public static void main(String[] args) {
-        SeriesTaylor st = new SeriesTaylor("ln(x)", 1.5);
+        SeriesTaylor st = new SeriesTaylor("sqrt(x)", 50);
 
         System.out.println(st.serieDeTaylor());
         //sebastianmariconfff
