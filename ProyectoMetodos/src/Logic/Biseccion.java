@@ -30,7 +30,7 @@ public class Biseccion {
     private double evaluarFuncion(double x){
         Funcion funcion = new Funcion();
         funcion.definirFuncion(this.funcion.getFuncion());
-        funcion.valorX(x);
+        funcion.valor(x);
         return Double.parseDouble(funcion.getResultado());
     }
 

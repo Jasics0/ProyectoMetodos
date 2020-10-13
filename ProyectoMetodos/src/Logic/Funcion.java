@@ -24,7 +24,7 @@ public class Funcion {
 
     public void definirFuncion(String funcion) {
         this.funcionOriginal = this.funcion = funcion;
-        valorX(1);
+        valor(1);
         while (getResultado().contains("error")) {
             System.out.print("La función no sirve weonaso. Digite otra:");
             definirFuncion(new Scanner(System.in).next());
@@ -32,7 +32,7 @@ public class Funcion {
         encontrarNumeros();
     }
 
-    public void valorX(double x) {
+    public void valor(double x) {
         this.x = x;
     }
 
@@ -44,6 +44,7 @@ public class Funcion {
             return resultado + "";
         }
     }
+
 
     private void evaluarFuncion() {
         if (trigonometrica()) {
@@ -62,6 +63,7 @@ public class Funcion {
         }
         error = (javaFuncion.hasError()) ? "Hubo un error." : "";
     }
+
 
     public String getFuncion() {
         return funcion;
@@ -116,7 +118,7 @@ public class Funcion {
 
     private void encontrarNumeros() {
         double anterior = 0;
-        valorX(0.1);
+        valor(0.1);
         int i = 0, i2 = 1;
         while (Float.isInfinite(Float.parseFloat(getResultado()))) {
             i2 += 1;
@@ -124,7 +126,7 @@ public class Funcion {
                 i += 1;
                 i2 = 0;
             }
-            valorX(distribuirSignos(i, i2));
+            valor(distribuirSignos(i, i2));
         }
         if (Double.parseDouble(getResultado()) < 0) {
             while (Double.parseDouble(getResultado()) < 0) {
@@ -134,7 +136,7 @@ public class Funcion {
                     i += 1;
                     i2 = 0;
                 }
-                valorX(Double.parseDouble(i + "." + i2));
+                valor(Double.parseDouble(i + "." + i2));
             }
             a = anterior;
             while (Double.parseDouble(getResultado()) <= 0) {
@@ -143,7 +145,7 @@ public class Funcion {
                     i += 1;
                     i2 = 0;
                 }
-                valorX(distribuirSignos(i, i2));
+                valor(distribuirSignos(i, i2));
             }
             b = distribuirSignos(i, i2);
         } else {
@@ -154,7 +156,7 @@ public class Funcion {
                     i2 = 0;
                 } else
                     i2 -= 1;
-                valorX(distribuirSignos(i, i2));
+                valor(distribuirSignos(i, i2));
             }
             b = anterior;
             while (Double.parseDouble(getResultado()) >= 0) {
@@ -163,7 +165,7 @@ public class Funcion {
                     i2 = 0;
                 } else
                     i2 -= 1;
-                valorX(distribuirSignos(i, i2));
+                valor(distribuirSignos(i, i2));
             }
             a = distribuirSignos(i, i2);
         }

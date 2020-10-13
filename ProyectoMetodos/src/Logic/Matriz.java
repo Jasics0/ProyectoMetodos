@@ -65,6 +65,12 @@ public class Matriz {
         }
     }
 
+    public void imprimirMatriz(double[] matriz){
+        for (int i = 0; i < matriz.length; i++) {
+            System.out.print(matriz[i]+" ");
+        }
+    }
+
     public double[][] matrizTranspuesta(double[][] matriz) {
         double[][] matrizT = new double[matriz.length][matriz.length];
 

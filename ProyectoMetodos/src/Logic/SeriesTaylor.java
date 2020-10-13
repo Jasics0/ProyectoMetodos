@@ -1,7 +1,5 @@
 package Logic;
 
-import java.util.Scanner;
-
 public class SeriesTaylor {
 
     private final Funcion funcion = new Funcion();
@@ -22,7 +20,7 @@ public class SeriesTaylor {
             a = funcion.distribuirSignos(i, i2);
         }
 
-        funcion.valorX(a);
+        funcion.valor(a);
         //Intenta de 0 hasta 1000
         while (((Math.abs(Double.parseDouble(funcion.getResultado()))) - (Math.abs(Math.floor(Double.parseDouble(funcion.getResultado()))))) % 1 != 0) {
             i2 += 1;
@@ -31,7 +29,7 @@ public class SeriesTaylor {
                 i2 = 0;
             }
             a = funcion.distribuirSignos(i, i2);
-            funcion.valorX(a);
+            funcion.valor(a);
             c += 1;
             if (c >= 10000) {
                 break;
@@ -41,7 +39,7 @@ public class SeriesTaylor {
         i = (int) x;
         i2 = (int) ((x % 1) * 10);
         double b=funcion.distribuirSignos(i,i2);
-        funcion.valorX(b);
+        funcion.valor(b);
         //Intenta de 0 hasta -1000
         while (((Math.abs(Double.parseDouble(funcion.getResultado()))) - (Math.abs(Math.floor(Double.parseDouble(funcion.getResultado()))))) % 1 != 0) {
             if (i2 == -9) {
@@ -50,7 +48,7 @@ public class SeriesTaylor {
             } else
                 i2 -= 1;
             b = funcion.distribuirSignos(i, i2);
-            funcion.valorX(b);
+            funcion.valor(b);
             c2 += 1;
             if (c2 >= 10000) {
                 break;
@@ -70,7 +68,7 @@ public class SeriesTaylor {
     public double serieDeTaylor() {
         double c = encontrarNumeroCercano();
         double fBack = 0;
-        funcion.valorX(c);
+        funcion.valor(c);
         double fNext = Double.parseDouble(funcion.getResultado());
         int i = 0;
         while (Float.isNaN(Float.parseFloat(((fNext - fBack) / fNext) + "")) || (Math.round(Math.abs((fNext - fBack) / fNext) * 100)) != 0) {

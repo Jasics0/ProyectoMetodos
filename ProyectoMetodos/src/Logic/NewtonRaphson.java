@@ -13,7 +13,7 @@ public class NewtonRaphson {
 
     public double calcularNewtonRaphson(){
         double xr=0;
-        funcion.valorX(xi);
+        funcion.valor(xi);
         xr= Double.parseDouble(funcion.getResultado());
         funcion.derivar();
         xr/= Double.parseDouble(funcion.getResultado());
@@ -23,7 +23,7 @@ public class NewtonRaphson {
         while (Float.isNaN(Float.parseFloat(((fNext - fBack) / fNext) + "")) || (Math.round(Math.abs((fNext - fBack) / fNext) * 100)) != 0) {
             fBack=fNext;
             xi=xr;
-            funcion.valorX(xi);
+            funcion.valor(xi);
             funcion.volverFuncionOriginal();
             fNext= Double.parseDouble(funcion.getResultado());
             funcion.derivar();
