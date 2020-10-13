@@ -110,7 +110,7 @@ public class Matriz {
         return suma;
     }
 
-    public double[][] multiMatri(double[][] m, double[][] m2) {
+    public double[][] multiplicarMatriz(double[][] m, double[][] m2) {
         if (m[0].length == m2.length) {
             int a=m.length,b=m2[0].length;
 
