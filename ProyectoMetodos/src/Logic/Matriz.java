@@ -107,7 +107,6 @@ public class Matriz {
     public double[][] multiMatri(double[][] m, double[][] m2) {
         if (m[0].length == m2.length) {
             int a=m.length,b=m2[0].length;
-            double auxiliar=0;
 
             double[][] mMulti = new double[m.length][m2[0].length];
                     for (int i = 0; i < a; i++) {
