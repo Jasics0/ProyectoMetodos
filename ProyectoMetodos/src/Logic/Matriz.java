@@ -2,25 +2,6 @@ package Logic;
 
 public class Matriz {
 
-    public static void main(String[] args) {
-        double[][] matriz = new double[3][3];
-        matriz[0][0] = 2;
-        matriz[0][1] = -2;
-        matriz[0][2] = 2;
-
-        matriz[1][0] = 2;
-        matriz[1][1] = 1;
-        matriz[1][2] = 0;
-
-        matriz[2][0] = 3;
-        matriz[2][1] = -2;
-        matriz[2][2] = 2;
-
-
-        double[][] matrizI = matrizInversa(matriz);
-        imprimirMatriz(matrizI);
-
-    }
 
 
     public static double[][] matrizInversa(double[][] matriz) {
@@ -76,10 +57,10 @@ public class Matriz {
         return matrizA;
     }
 
-    public static void imprimirMatriz(double[][]m){
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j <m[0].length ; j++) {
-                System.out.print(m[i][j]+" ");
+    public static void imprimirMatriz(double[][]matriz){
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j <matriz[0].length ; j++) {
+                System.out.print(matriz[i][j]+" ");
             }
             System.out.println();
         }
