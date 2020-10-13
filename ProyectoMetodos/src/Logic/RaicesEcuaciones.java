@@ -9,38 +9,21 @@ public class RaicesEcuaciones {
     Matriz m=new Matriz();
 
     public RaicesEcuaciones(){
-        A =new double[2][4];
+        A =new double[2][2];
 
-        A[0][0]=5;
-        A[0][1]=3;
-        A[0][2]=-4;
-        A[0][3]=-2;
+        A[0][0]=10;
+        A[0][1]=99.5;
 
-        A[1][0]=8;
-        A[1][1]=-1;
-        A[1][2]=0;
-        A[1][3]=-3;
+        A[1][0]=99.5;
+        A[1][1]=1323.25;
 
+        B =new double[2][1];
 
-        B =new double[4][3];
+        B[0][0]=72.8;
 
-        B[0][0]=1;
-        B[0][1]=4;
-        B[0][2]=0;
+        B[1][0]=580.7;
 
-        B[1][0]=-5;
-        B[1][1]=3;
-        B[1][2]=7;
-
-        B[2][0]=0;
-        B[2][1]=-9;
-        B[2][2]=5;
-
-        B[3][0]=5;
-        B[3][1]=1;
-        B[3][2]=4;
-
-        m.imprimirMatriz(m.multiMatri(A,B));
+        m.imprimirMatriz(m.multiMatri(m.matrizInversa(A),B));
 
     }
 
