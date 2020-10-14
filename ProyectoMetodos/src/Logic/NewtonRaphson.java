@@ -34,7 +34,7 @@ public class NewtonRaphson {
     }
 
     public static void main(String[] args) {
-        NewtonRaphson n = new NewtonRaphson("x^2-43");
+        NewtonRaphson n = new NewtonRaphson("x^2");
         System.out.println(n.calcularNewtonRaphson());
     }
 }

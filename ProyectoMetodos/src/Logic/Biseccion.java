@@ -12,6 +12,11 @@ public class Biseccion {
     }
 
     public double biseccion() {
+        if(xi==xu){
+        return 0;
+
+        }else{
+        
         double xr=(xi+xu)/2;
         double fBack = 0;
         double fNext=xr ;
@@ -25,6 +30,7 @@ public class Biseccion {
             fNext= (xi+xu)/2;
         }
         return fNext;
+}
     }
 
     private double evaluarFuncion(double x){
@@ -35,7 +41,7 @@ public class Biseccion {
     }
 
     public static void main(String[] args) {
-        Biseccion b = new Biseccion("x^2+ln(x)+e^x-205");
+        Biseccion b = new Biseccion("x^2");
         System.out.println(b.biseccion());
     }
 }

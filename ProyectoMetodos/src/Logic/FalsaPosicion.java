@@ -12,6 +12,10 @@ public class FalsaPosicion {
     }
 
     public double  hallarXr(){
+        if(xi==xu){
+        return 0;
+
+        }else{
         double xr=((evaluarFuncion(xu)*xi)-evaluarFuncion(xi)*xu)/(evaluarFuncion(xu)-evaluarFuncion(xi));
         double fBack = 0;
         double fNext=xr ;
@@ -25,6 +29,7 @@ public class FalsaPosicion {
         fNext= ((evaluarFuncion(xu)*xi)-evaluarFuncion(xi)*xu)/(evaluarFuncion(xu)-evaluarFuncion(xi));
         }
         return fNext;
+}
     }
 
     private double evaluarFuncion(double x){
@@ -35,7 +40,8 @@ public class FalsaPosicion {
     }
 
     public static void main(String[] args) {
-        FalsaPosicion f = new FalsaPosicion("x^2-43");
+        FalsaPosicion f = new FalsaPosicion("x^3-66");
         System.out.println(f.hallarXr());
+        
     }
 }
