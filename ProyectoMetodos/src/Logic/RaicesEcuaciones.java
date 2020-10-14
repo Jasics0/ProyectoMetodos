@@ -40,6 +40,7 @@ public class RaicesEcuaciones {
     public double sumXY(String funcion,String funcion2,int num,int num2){
         Funcion f = new Funcion();
         Funcion f2= new Funcion();
+        
         double suma=0;
         f.definirFuncion(funcion);
         f2.definirFuncion(funcion2);
@@ -85,6 +86,8 @@ public class RaicesEcuaciones {
         double[][] resul= m.multiplicarMatriz(AI,B);
 
         m.imprimirMatriz(resul);
+        System.out.println("La funcion aproximada a los valores de la tabla está definida por : Y="+resul[1][0]+"(X) +"+resul[0][0]);
+
 
 
     }
