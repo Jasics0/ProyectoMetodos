@@ -53,10 +53,23 @@ public class RaicesEcuaciones {
     }
 
     public static void main(String[] args) {
-
+        Scanner sc = new Scanner(System.in);
         RaicesEcuaciones r= new RaicesEcuaciones();
+        int num;
+        double x,y;
+        System.out.print("Digite la cantidad de filas que contiene la tabla ");
+        num = sc.nextInt();
+        for (int i = 0; i<num; i++) {
+        System.out.print("Dijite el valor de x");
+        x = sc.nextDouble();
+        System.out.print("Dijite el valor de y");
+        y = sc.nextDouble();
+        r.ingresarDatos(x,y);
+        }
+        
 
-        r.ingresarDatos(2.5,13);
+
+       /* r.ingresarDatos(2.5,13);
         r.ingresarDatos(3.5,11);
         r.ingresarDatos(5,8.5);
         r.ingresarDatos(6,8.2);
@@ -65,7 +78,7 @@ public class RaicesEcuaciones {
         r.ingresarDatos(12.5,5.2);
         r.ingresarDatos(15,4.8);
         r.ingresarDatos(17.5,4.6);
-        r.ingresarDatos(20,4.3);
+        r.ingresarDatos(20,4.3);*/
 
 
 
