@@ -33,7 +33,7 @@ public class Funcion {
         if (Double.parseDouble(getResultado())>0){
             valor(-1);
             if (Double.parseDouble(getResultado())>0){
-                System.out.println("La funcion es par.");
+               // System.out.println("La funcion es par.");
             }
         } else {
             encontrarNumeros();

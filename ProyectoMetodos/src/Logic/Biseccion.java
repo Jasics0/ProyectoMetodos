@@ -41,6 +41,7 @@ public class Biseccion {
     }
 
     public static void main(String[] args) {
+
         Biseccion b = new Biseccion("x^2");
         System.out.println(b.biseccion());
     }
