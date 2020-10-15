@@ -56,8 +56,8 @@ public class Integracion {
 
     public static void main(String[] args) {
 
-        Integracion i = new Integracion("x^2");
-        Scanner sc = new Scanner(System.in);
+        Integracion i = new Integracion("x^(1/2)");
+        
         System.out.println(i.simpson());
     }
 }
