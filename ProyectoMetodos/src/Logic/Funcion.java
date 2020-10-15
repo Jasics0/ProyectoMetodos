@@ -186,4 +186,25 @@ public class Funcion {
     public double getB() {
         return b;
     }
+    public double derivarDefinicion(double xo) {
+        double h=0.000000001,acumu=0,fxi,fxl;
+        valor(xo+h);
+        fxi=Double.parseDouble(getResultado());
+        valor(xo);
+        fxl=Double.parseDouble(getResultado());
+        acumu=(fxi-fxl)/h;
+        
+         
+        
+        return acumu;
+}
+        /*public static void main(String[] args) {
+        double a=0;
+        Funcion i = new Funcion();
+        i.definirFuncion("(x^3)+3*x");
+        Scanner sc = new Scanner(System.in);
+        
+        
+        System.out.println(i.derivarDefinicion(5.0));
+   */
 }
