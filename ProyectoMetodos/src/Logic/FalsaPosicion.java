@@ -11,7 +11,7 @@ public class FalsaPosicion {
         this.xu=this.funcion.getB();
     }
 
-    public double  hallarXr(){
+    public double hallarXr(){
         if(xi==xu){
         return 0;
 
