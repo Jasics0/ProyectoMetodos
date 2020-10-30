@@ -21,7 +21,10 @@ public class Funcion {
         this.javaFuncion.addStandardFunctions();
         this.javaFuncion.addStandardConstants();
     }
-
+    private void definirFuncionN(String funcion) {
+        this.funcionOriginal = this.funcion = funcion;
+   
+    }
     public void definirFuncion(String funcion) {
         this.funcionOriginal = this.funcion = funcion;
         valor(1);
@@ -180,17 +183,45 @@ public class Funcion {
         return b;
     }
 
-    public double derivarDefinicion(double xo) {
-        double h=0.1,acumu=0,fxi,fxl;
-        valor(xo+h);
-        fxi=Double.parseDouble(getResultado());
-        valor(xo);
-        fxl=Double.parseDouble(getResultado());
-        acumu=(fxi-fxl)/h;
+    public double derivarDefinicion(String funcion,double xo,int orden) {
+        definirFuncionN(funcion);
+            double h=0.1;
+          // if (orden==1){h=0.1;}else{h=10000;}
+        double acumu=0,fxi,fxl,aux;
+        double[] A = new double [6];
+        for (int i = 0; i < A.length; i++) {
+            
+            aux=xo+(h*i) ;
+            System.out.println(aux);
+            valor(aux);
+            A[i] =Double.parseDouble(getResultado());
+            //System.out.println(A[i]);
+        }
+       
+        switch(orden){
+            case 1:
+        acumu=(-A[2]+4*A[1]-3*A[0])/(2*h);
+            break;
+            case 2: 
+        acumu=(-A[3]+4*A[2]-5*A[1]+2*A[0])/Math.pow(h,2);
+            break;
+            case 3: 
+         acumu=(-2*A[4]+14*A[3]-24*A[2]+18*A[1]-5*A[0])/(2*(Math.pow(h,3)));
+            break;
+            case 4: 
+         acumu=(-2*A[5]+11*A[4]-24*A[3]+26*A[2]-14*A[1]+3*A[0])/(Math.pow(h,4));
+            break;
+        }
+        
+        
+        
         
          
         
         return acumu;
 }
-    
+    public static void main(String[] args) {
+        Funcion dd = new Funcion();
+        System.out.println(dd.derivarDefinicion("x^3+3x",5.0,1));
+    }
 }
