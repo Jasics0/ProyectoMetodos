@@ -1,7 +1,6 @@
 package Logic;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class AjusteCurvas {
 
@@ -9,6 +8,7 @@ public class AjusteCurvas {
     static double[][] A, B;
     static Matriz m = new Matriz();
     Funcion ay = new Funcion();
+
     public AjusteCurvas() {
     }
 
@@ -29,7 +29,7 @@ public class AjusteCurvas {
     public double sumX(String funcion, int num) {
         Funcion f = new Funcion();
         double suma = 0;
-        f.definirFuncion(funcion);
+        f.definirFuncionA(funcion);
         for (int i = 0; i < numDatos(); i++) {
             f.valor(tabla.get(i)[num]);
             suma += Double.parseDouble(f.getResultado());
@@ -57,7 +57,9 @@ public class AjusteCurvas {
                 }
                 if (j == (x - 1)) {
                     aux += 1;
+
                 }
+
             }
 
         }
@@ -67,7 +69,6 @@ public class AjusteCurvas {
             } else {
                 B[i][0] = sumXY("x^" + i, "x", 0, 1);
             }
-
         }
         double[][] AI = m.matrizInversa(A);
         double[][] resul = m.multiplicarMatriz(AI, B);
@@ -87,8 +88,8 @@ public class AjusteCurvas {
         Funcion f2 = new Funcion();
 
         double suma = 0;
-        f.definirFuncion(funcion);
-        f2.definirFuncion(funcion2);
+        f.definirFuncionA(funcion);
+        f2.definirFuncionA(funcion2);
         for (int i = 0; i < numDatos(); i++) {
             f.valor(tabla.get(i)[num]);
             f2.valor(tabla.get(i)[num2]);
@@ -160,14 +161,14 @@ public class AjusteCurvas {
         B[1][0] = sumXY("x", "ln(x)", 0, 1);
         double[][] AI = m.matrizInversa(A);
         double[][] resul = m.multiplicarMatriz(AI, B);
-      
-        ay.definirFuncion("e^x");
+
+        ay.definirFuncionA("e^x");
         ay.valor(resul[0][0]);
         return " Y=" + ay.getResultado() + "*e^(" + resul[1][0] + "*X)";
 
     }
 
-    public String sacarEcuPot(){
+    public String sacarEcuPot() {
         A = new double[2][2];
         B = new double[2][1];
 
@@ -194,11 +195,12 @@ public class AjusteCurvas {
         B[1][0] = sumXY("ln(x)", "ln(x)", 0, 1);
         double[][] AI = m.matrizInversa(A);
         double[][] resul = m.multiplicarMatriz(AI, B);
-       
-        ay.definirFuncion("e^x");
+
+        ay.definirFuncionA("e^x");
         ay.valor(resul[0][0]);
         return " Y= " + ay.getResultado() + "*x^(" + resul[1][0] + ")";
 
     }
+
 
 }

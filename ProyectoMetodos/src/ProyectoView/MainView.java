@@ -499,7 +499,7 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        CalcularAjusteLineal.setText("Resultato");
+        CalcularAjusteLineal.setText("Resultado");
         CalcularAjusteLineal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CalcularAjusteLinealActionPerformed(evt);
@@ -577,6 +577,8 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(62, Short.MAX_VALUE))
         );
+
+        CalcularAjusteLineal.getAccessibleContext().setAccessibleName("Resultado");
 
         mainPanel.add(chartPanel, "card4");
 
@@ -715,7 +717,6 @@ public class MainView extends javax.swing.JFrame {
         ac.borrarTabla();
         captura();
         if ("Logaritmico".equals(jComboBox1.getSelectedItem().toString())) {
-
             jTextField6.setText(ac.sacarEcuLog());
         } else if (jComboBox1.getSelectedItem().toString().equals("Exponencial")) {
             jTextField6.setText(ac.sacarEcuExp());
@@ -724,7 +725,6 @@ public class MainView extends javax.swing.JFrame {
             jTextField6.setText(ac.sacarEcuPot());
 
         } else {
-
             jTextField6.setText(ac.sacarEcu(Integer.parseInt(jComboBox1.getSelectedItem().toString())));
         }
 

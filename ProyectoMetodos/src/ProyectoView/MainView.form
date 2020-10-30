@@ -781,8 +781,11 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="CalcularAjusteLineal">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Resultato"/>
+                    <Property name="text" type="java.lang.String" value="Resultado"/>
                   </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Resultado"/>
+                  </AccessibilityProperties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CalcularAjusteLinealActionPerformed"/>
                   </Events>

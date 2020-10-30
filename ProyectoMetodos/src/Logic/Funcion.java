@@ -35,6 +35,15 @@ public class Funcion {
         }
         encontrarNumeros();
     }
+    
+        public void definirFuncionA(String funcion) {
+        this.funcionOriginal = this.funcion = funcion;
+        valor(1);
+        while (getResultado().contains("error")) {
+            System.out.print("La función no sirve weonaso. Digite otra:");
+            definirFuncion(new Scanner(System.in).next());
+        }
+    }
 
     public void valor(double x) {
         this.x = x;
