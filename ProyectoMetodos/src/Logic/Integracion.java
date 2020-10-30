@@ -19,15 +19,10 @@ public class Integracion {
         this.xi = this.funcion.getA();
         this.xu = this.funcion.getB();
         }
-  public double simpson() {
-        double a,b,h,fNext,acumu=0;
+  public double simpson(double a, double b) {
+        double h,fNext,acumu=0;
 
-        
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Dijite el limite inferior");
-        a = sc.nextDouble();
-        System.out.print("Dijite el limite superior");
-        b = sc.nextDouble();
+       
         h=(b-a)/100000;
          for (int i = 0; i <100000; i++) {
         if(i==1 || i==100000){
@@ -58,6 +53,6 @@ public class Integracion {
 
         Integracion i = new Integracion("x^(1/2)");
         
-        System.out.println(i.simpson());
+            System.out.println(i.simpson(1,2));
     }
 }

@@ -88,10 +88,6 @@ public class SeriesTaylor {
         return factorial;
     }
 
-    public static void main(String[] args) {
-        SeriesTaylor st = new SeriesTaylor("sqrt(x)", 50);
-
-        System.out.println(st.serieDeTaylor());
-        //sebastianmariconfff
-    }
+  
+    
 }

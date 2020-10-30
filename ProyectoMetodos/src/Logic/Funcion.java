@@ -188,7 +188,7 @@ public class Funcion {
     }
 
     public double derivarDefinicion(double xo) {
-        double h=0.000000001,acumu=0,fxi,fxl;
+        double h=0.1,acumu=0,fxi,fxl;
         valor(xo+h);
         fxi=Double.parseDouble(getResultado());
         valor(xo);
