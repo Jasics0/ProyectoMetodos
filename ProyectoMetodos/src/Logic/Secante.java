@@ -1,28 +1,34 @@
 package Logic;
+
 public class Secante {
+
     private final Funcion funcion = new Funcion();
-    private double xi ,xi_1;
+    private double xi, xi_1;
 
     public Secante(String funcion) {
         this.funcion.definirFuncion(funcion);
-        this.xi=this.funcion.getA();
-        this.xi_1=xi-1;
+        this.xi = this.funcion.getA();
+        this.xi_1 = xi - 1;
     }
 
-    public double calcularSecante(){
-        double xr=xi-(evaluarFuncion(xi)*(xi-xi_1)/(evaluarFuncion(xi)-evaluarFuncion(xi_1)));
+    public double calcularSecante() {
+        double xr = xi - (evaluarFuncion(xi) * (xi - xi_1) / (evaluarFuncion(xi) - evaluarFuncion(xi_1)));
         double fBack = 0;
-        double fNext=xr ;
+        double fNext = xr;
         while (Float.isNaN(Float.parseFloat(((fNext - fBack) / fNext) + "")) || (Math.round(Math.abs((fNext - fBack) / fNext) * 100)) != 0) {
-            fBack=fNext;
-            xi_1=xi;
-            xi=fNext;
-            fNext= xi-(evaluarFuncion(xi)*(xi-xi_1)/(evaluarFuncion(xi)-evaluarFuncion(xi_1)));
+            fBack = fNext;
+            xi_1 = xi;
+            xi = fNext;
+            if (fNext != 0) {
+                fNext = xi - (evaluarFuncion(xi) * (xi - xi_1) / (evaluarFuncion(xi) - evaluarFuncion(xi_1)));
+            } else {
+                break;
+            }
         }
         return fNext;
     }
 
-    private double evaluarFuncion(double x){
+    private double evaluarFuncion(double x) {
         Funcion funcion = new Funcion();
         funcion.definirFuncion(this.funcion.getFuncion());
         funcion.valor(x);

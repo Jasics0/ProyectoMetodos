@@ -29,15 +29,7 @@ public class Funcion {
             System.out.print("La función no sirve weonaso. Digite otra:");
             definirFuncion(new Scanner(System.in).next());
         }
-
-        if (Double.parseDouble(getResultado())>0){
-            valor(-1);
-            if (Double.parseDouble(getResultado())>0){
-               // System.out.println("La funcion es par.");
-            }
-        } else {
-            encontrarNumeros();
-        }
+        encontrarNumeros();
     }
 
     public void valor(double x) {
@@ -136,6 +128,7 @@ public class Funcion {
             }
             valor(distribuirSignos(i, i2));
         }
+
         if (Double.parseDouble(getResultado()) < 0) {
             while (Double.parseDouble(getResultado()) < 0) {
                 anterior = distribuirSignos(i, i2);
