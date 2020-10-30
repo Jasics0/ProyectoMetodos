@@ -21,10 +21,11 @@ public class Funcion {
         this.javaFuncion.addStandardFunctions();
         this.javaFuncion.addStandardConstants();
     }
+
     private void definirFuncionN(String funcion) {
         this.funcionOriginal = this.funcion = funcion;
-   
     }
+
     public void definirFuncion(String funcion) {
         this.funcionOriginal = this.funcion = funcion;
         valor(1);
@@ -42,12 +43,12 @@ public class Funcion {
     public String getResultado() {
         evaluarFuncion();
         if (!error.equals("")) {
+            System.out.println("jajabruto");
             return error;
         } else {
             return resultado + "";
         }
     }
-
 
     private void evaluarFuncion() {
         if (trigonometrica()) {
@@ -62,18 +63,18 @@ public class Funcion {
         if (trigonometrica()) {
             resultado = javaFuncion.getValue();
         } else {
+
             resultado = javaFuncion.getValue();
         }
         error = (javaFuncion.hasError()) ? "Hubo un error." : "";
     }
-
 
     public String getFuncion() {
         return funcion;
     }
 
     public void volverFuncionOriginal() {
-        funcion=funcionOriginal;
+        funcion = funcionOriginal;
     }
 
     private boolean trigonometrica() {
@@ -158,8 +159,9 @@ public class Funcion {
                 if (i2 == -9) {
                     i -= 1;
                     i2 = 0;
-                } else
+                } else {
                     i2 -= 1;
+                }
                 valor(distribuirSignos(i, i2));
             }
             b = anterior;
@@ -167,8 +169,9 @@ public class Funcion {
                 if (i2 == -9) {
                     i -= 1;
                     i2 = 0;
-                } else
+                } else {
                     i2 -= 1;
+                }
                 valor(distribuirSignos(i, i2));
             }
             a = distribuirSignos(i, i2);
@@ -183,45 +186,51 @@ public class Funcion {
         return b;
     }
 
-    public double derivarDefinicion(String funcion,double xo,int orden) {
+    public double derivarDefinicion(String funcion, double xo, int orden) {
         definirFuncionN(funcion);
-            double h=0.1;
-          // if (orden==1){h=0.1;}else{h=10000;}
-        double acumu=0,fxi,fxl,aux;
-        double[] A = new double [6];
-        for (int i = 0; i < A.length; i++) {
-            
-            aux=xo+(h*i) ;
-            System.out.println(aux);
-            valor(aux);
-            A[i] =Double.parseDouble(getResultado());
-            //System.out.println(A[i]);
-        }
-       
+        double h = 0.1;
+        double acumu = 0, fxi, fxl, aux = 0;
+        double[] A = new double[6];
         switch(orden){
-            case 1:
-        acumu=(-A[2]+4*A[1]-3*A[0])/(2*h);
-            break;
-            case 2: 
-        acumu=(-A[3]+4*A[2]-5*A[1]+2*A[0])/Math.pow(h,2);
-            break;
-            case 3: 
-         acumu=(-2*A[4]+14*A[3]-24*A[2]+18*A[1]-5*A[0])/(2*(Math.pow(h,3)));
-            break;
-            case 4: 
-         acumu=(-2*A[5]+11*A[4]-24*A[3]+26*A[2]-14*A[1]+3*A[0])/(Math.pow(h,4));
-            break;
+          case 1:
+                h=0.000000001;
+                break;
+            case 2:
+                h=0.000001;
+                break;
+            case 3:
+                h=0.001;
+                break;
+            case 4:
+                h=0.1;
+                break;
         }
-        
-        
-        
-        
-         
-        
+       for (int i = 0; i < A.length; i++) {
+            aux = xo + (h * i);
+            valor(aux);
+            A[i] = Double.parseDouble(getResultado());
+        }
+
+        switch (orden) {
+            case 1:
+                acumu = (-A[2] + 4 * A[1] - 3 * A[0]) / (2 * h);
+                break;
+            case 2:
+                acumu = (-A[3] + 4 * A[2] - 5 * A[1] + 2 * A[0]) / Math.pow(h, 2);
+                break;
+            case 3:
+                acumu = (-3 * A[4] + 14 * A[3] - 24 * A[2] + 18 * A[1] - 5 * A[0]) / (2 * (Math.pow(h, 3)));
+                break;
+            case 4:
+                acumu = (-2 * A[5] + 11 * A[4] - 24 * A[3] + 26 * A[2] - 14 * A[1] + 3 * A[0]) / (Math.pow(h, 4));
+                break;
+        }
+
         return acumu;
-}
+    }
+
     public static void main(String[] args) {
         Funcion dd = new Funcion();
-        System.out.println(dd.derivarDefinicion("x^3+3x",5.0,1));
+        System.out.println(dd.derivarDefinicion("x^3+3*x", 5.0, 1));
     }
 }
