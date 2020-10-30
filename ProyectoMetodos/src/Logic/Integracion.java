@@ -15,7 +15,7 @@ public class Integracion {
     private double xi, xu;
 
     public Integracion(String funcion) {
-        this.funcion.definirFuncion(funcion);
+        this.funcion.definirFuncionA(funcion);
         this.xi = this.funcion.getA();
         this.xu = this.funcion.getB();
         }
@@ -44,7 +44,7 @@ public class Integracion {
 
     private double evaluarFuncion(double x){
         Funcion funcion = new Funcion();
-        funcion.definirFuncion(this.funcion.getFuncion());
+        funcion.definirFuncionA(this.funcion.getFuncion());
         funcion.valor(x);
         return Double.parseDouble(funcion.getResultado());
     }

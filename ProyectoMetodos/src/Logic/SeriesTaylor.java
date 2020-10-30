@@ -6,7 +6,7 @@ public class SeriesTaylor {
     private final double x;
 
     public SeriesTaylor(String funcion, double x) {
-        this.funcion.definirFuncion(funcion);
+        this.funcion.definirFuncionA(funcion);
         this.x = x;
     }
 
