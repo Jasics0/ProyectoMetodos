@@ -12,7 +12,7 @@ public class Derivada {
     public static String derivar(String funcion){
         String derivada="";
         String respecto="x";
-
+        //Hola soy german
         DJep derivador= new DJep();
 
         derivador.addStandardFunctions();
