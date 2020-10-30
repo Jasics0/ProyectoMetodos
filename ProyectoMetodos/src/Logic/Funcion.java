@@ -229,8 +229,5 @@ public class Funcion {
         return acumu;
     }
 
-    public static void main(String[] args) {
-        Funcion dd = new Funcion();
-        System.out.println(dd.derivarDefinicion("x^3+3*x", 5.0, 1));
-    }
+   
 }

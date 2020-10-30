@@ -8,7 +8,10 @@ package ProyectoView;
 import Logic.AjusteCurvas;
 import Logic.Biseccion;
 import Logic.FalsaPosicion;
+import Logic.Funcion;
 import Logic.Integracion;
+import Logic.NewtonRaphson;
+import Logic.Secante;
 import Logic.SecanteModificado;
 import Logic.SeriesTaylor;
 import javax.swing.JFrame;
@@ -41,9 +44,9 @@ public class MainView extends javax.swing.JFrame {
     }
 
     public void captura() {
-        
-        for (int i = 0; i <tabla.getRowCount() ; i++) {
-            ac.ingresarDatos(Double.parseDouble(modelo.getValueAt(i, 0).toString()),Double.parseDouble(modelo.getValueAt(i, 1).toString()));
+
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            ac.ingresarDatos(Double.parseDouble(modelo.getValueAt(i, 0).toString()), Double.parseDouble(modelo.getValueAt(i, 1).toString()));
         }
     }
 
@@ -81,6 +84,8 @@ public class MainView extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
         booksPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         TextEvaluar = new javax.swing.JTextField();
@@ -89,6 +94,7 @@ public class MainView extends javax.swing.JFrame {
         TextFuncion = new javax.swing.JTextField();
         TextResul = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
         chartPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -249,12 +255,22 @@ public class MainView extends javax.swing.JFrame {
         });
 
         jTextField4.setEditable(false);
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Resultado");
 
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Evaluar en");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Orden derivada");
 
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
@@ -294,11 +310,16 @@ public class MainView extends javax.swing.JFrame {
                             .addComponent(jButton1)
                             .addGroup(homePanelLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(154, Short.MAX_VALUE))
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel17))
+                            .addGroup(homePanelLayout.createSequentialGroup()
+                                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(157, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,9 +345,13 @@ public class MainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(42, 42, 42)
@@ -353,7 +378,7 @@ public class MainView extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Funcion                                                Evaluar en               ");
 
-        jButton3.setText("Estimar Valor");
+        jButton3.setText("Resultado");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -375,6 +400,8 @@ public class MainView extends javax.swing.JFrame {
 
         jLabel15.setText("Si quiere hallar la raiz de la ecuacion, basta con colocar la funcion solamente ");
 
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SecanteMod", "Secante", "NewtonRaphson", "FalsaPosicion", "Biseccion" }));
+
         javax.swing.GroupLayout booksPanelLayout = new javax.swing.GroupLayout(booksPanel);
         booksPanel.setLayout(booksPanelLayout);
         booksPanelLayout.setHorizontalGroup(
@@ -393,19 +420,22 @@ public class MainView extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addGroup(booksPanelLayout.createSequentialGroup()
                                 .addGap(182, 182, 182)
-                                .addComponent(TextEvaluar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(booksPanelLayout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jButton3))
+                                .addComponent(TextEvaluar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(booksPanelLayout.createSequentialGroup()
+                                .addGap(111, 111, 111)
+                                .addComponent(jButton3))))
                     .addGroup(booksPanelLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel15)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(jLabel15))
+                    .addGroup(booksPanelLayout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(booksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(booksPanelLayout.createSequentialGroup()
                     .addGap(59, 59, 59)
                     .addComponent(TextFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(293, Short.MAX_VALUE)))
+                    .addContainerGap(312, Short.MAX_VALUE)))
         );
         booksPanelLayout.setVerticalGroup(
             booksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,18 +446,20 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextEvaluar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(33, 33, 33)
                 .addComponent(jButton3)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextResul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(jLabel15)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
             .addGroup(booksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(booksPanelLayout.createSequentialGroup()
                     .addGap(212, 212, 212)
                     .addComponent(TextFuncion, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(305, Short.MAX_VALUE)))
+                    .addContainerGap(307, Short.MAX_VALUE)))
         );
 
         mainPanel.add(booksPanel, "card3");
@@ -496,7 +528,7 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chartPanelLayout.createSequentialGroup()
                 .addComponent(n, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(chartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chartPanelLayout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -535,7 +567,7 @@ public class MainView extends javax.swing.JFrame {
                 .addGroup(chartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(n)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -543,7 +575,7 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(CalcularAjusteLineal)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         mainPanel.add(chartPanel, "card4");
@@ -649,7 +681,10 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        jTextField4.setText("");
+        Funcion dd = new Funcion();
+        jTextField4.setText(dd.derivarDefinicion(jTextField3.getText(), Double.parseDouble(jTextField5.getText()), Integer.parseInt(jComboBox2.getSelectedItem().toString())) + "");
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -679,25 +714,25 @@ public class MainView extends javax.swing.JFrame {
     private void CalcularAjusteLinealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularAjusteLinealActionPerformed
         ac.borrarTabla();
         captura();
-        if("Logaritmico".equals(jComboBox1.getSelectedItem().toString())){
-            
-        jTextField6.setText(ac.sacarEcuLog());
-        }else if(jComboBox1.getSelectedItem().toString().equals("Exponencial")){ 
+        if ("Logaritmico".equals(jComboBox1.getSelectedItem().toString())) {
+
+            jTextField6.setText(ac.sacarEcuLog());
+        } else if (jComboBox1.getSelectedItem().toString().equals("Exponencial")) {
             jTextField6.setText(ac.sacarEcuExp());
-            
-        }else if(jComboBox1.getSelectedItem().toString().equals("Potencial")){ 
+
+        } else if (jComboBox1.getSelectedItem().toString().equals("Potencial")) {
             jTextField6.setText(ac.sacarEcuPot());
-            
-        } else{
-        
-        jTextField6.setText(ac.sacarEcu(Integer.parseInt(jComboBox1.getSelectedItem().toString())));
+
+        } else {
+
+            jTextField6.setText(ac.sacarEcu(Integer.parseInt(jComboBox1.getSelectedItem().toString())));
         }
-      
+
     }//GEN-LAST:event_CalcularAjusteLinealActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 
-        
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void TextFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFuncionActionPerformed
@@ -709,29 +744,53 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_TextResulActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        if(!TextEvaluar.getText().equals("") && !TextFuncion.getText().equals("")){
-        SeriesTaylor st = new SeriesTaylor(TextFuncion.getText(),Double.parseDouble(TextEvaluar.getText()));
-        
-        TextResul.setText(""+st.serieDeTaylor());
-            
 
-        }else{
-                
-       SecanteModificado sm=new SecanteModificado(TextFuncion.getText());
-       TextResul.setText(""+sm.calcularSecanteModificado());
-            System.out.println(sm.calcularSecanteModificado());
+        if (!TextEvaluar.getText().equals("") && !TextFuncion.getText().equals("")) {
+            SeriesTaylor st = new SeriesTaylor(TextFuncion.getText(), Double.parseDouble(TextEvaluar.getText()));
+
+            TextResul.setText("" + st.serieDeTaylor());
+     
+        } else {
+            switch (jComboBox3.getSelectedItem().toString()) {
+                case "SecanteMod":
+                    SecanteModificado sm = new SecanteModificado(TextFuncion.getText());
+                    TextResul.setText("" + sm.calcularSecanteModificado());
+
+                    break;
+                case "Secante":
+                            Secante s = new Secante(TextFuncion.getText());
+                            TextResul.setText("" + s.calcularSecante());
+                     break;
+                case "NewtonRaphson":
+                                  NewtonRaphson n = new NewtonRaphson(TextFuncion.getText());
+                                  TextResul.setText("" + n.calcularNewtonRaphson());
+                                  break;
+                case "FalsaPosicion":
+                    FalsaPosicion f = new FalsaPosicion(TextFuncion.getText());
+                     TextResul.setText("" + f.hallarXr());
+                     break;
+                case "Biseccion":
+                     Biseccion b = new Biseccion(TextFuncion.getText());                
+                     TextResul.setText(""+b.biseccion());
+                     break;
+            }
+
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Integracion i = new Integracion(jTextField3.getText());
-            if(Double.parseDouble(jTextField1.getText())<=Double.parseDouble(jTextField2.getText())){
-          
-            jTextField4.setText(""+i.simpson(Double.parseDouble(jTextField1.getText()),Double.parseDouble(jTextField2.getText())));
-            }else{jTextField4.setText("El valor de 'desde' debe ser menor que el de hasta, ingreselos de nuevo");
-                    }
+        if (Double.parseDouble(jTextField1.getText()) <= Double.parseDouble(jTextField2.getText())) {
+
+            jTextField4.setText("" + i.simpson(Double.parseDouble(jTextField1.getText()), Double.parseDouble(jTextField2.getText())));
+        } else {
+            jTextField4.setText("El valor de 'desde' debe ser menor que el de hasta, ingreselos de nuevo");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -786,6 +845,8 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -794,6 +855,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
