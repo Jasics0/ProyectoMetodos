@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Librerias/ext-1.1.1.jar",
+        "Librerias/jep-2.4.1.jar"
+    ]
+}
